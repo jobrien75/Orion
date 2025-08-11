@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Dashboard | Orion</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../styles/structure.css">
+		<link rel="stylesheet" href="../styles/style.css">
+		<link rel="stylesheet" href="../styles/FROK/frontend-kit.css">
+		<script src="../styles/FROK/frontend-kit.js"></script>
+		<script src="../script/dashboard.js"></script>
+		<script src="../script/builder.js"></script>
+		<script src="../script/global.js"></script>
+		<script src="../script/jspdf.umd.min.js"></script>
+		<script src="../script/BoschSans-Regular-normal.js"></script>
+		<script src="../script/html2canvas.min.js"></script>
+	</head>
+		
+	<body>
+		<script>
+			// Redirect to index if no logged in user detected
+			if (sessionStorage.getItem('authorization') == null || document.cookie.match(/^(.*;)?\s*OrionSession\s*=\s*[^;]+(.*)?$/) == null) {
+				createWarningBanner(document.getElementsByTagName('body')[0], 'rwarning', 'Please Login before trying to access the dashboard');
+				
+				// make Close-Button redirect to the index
+				document.getElementById('rwarning').children[2].addEventListener('click', function() {
+					window.location.href = "index.html";
+				}, false);
+				
+				window.stop();
+			}
+		</script>
+		
+		<img src="../resources/img/supergraphic-snippet.png" alt=" " class="supergraphic-snippet">
+		
+		<div class="grid-container">
+			<aside class="item-mini" id="dashboard-side">
+				<h4> Home </h4>
+				<script>
+					var aside = document.getElementById('dashboard-side');
+					appendIconImageFunction(aside, 'user', 'green', 'Start', 'loadStart()', true, true);
+					appendIconImage(aside, 'document-search', 'black', 'Details', false, false);
+					if (parseInt(sessionStorage.getItem('authorization')) > 0) {
+						appendIconImage(aside, 'reference', 'black', 'Progress', false, false);
+						appendIconImage(aside, 'document-settings', 'black', 'Changes', false, false);
+					}
+					appendIconImageFunction(aside, 'document-copy', 'black', 'Archive', 'loadArchive()', true, false);
+					appendIconImageFunction(aside, 'back-menu', 'black', 'Landing Page', 'loadIndex()', true, false);
+					appendIconImageFunction(aside, 'document-add', 'black', 'New Request', 'loadRequest()', true, false);
+				</script>				
+			</aside>
+			<main class="item-large" id="dashboard">
+				<h3> Welcome to your personal Dashboard </h3>
+				<div id="teamblocked-requests">
+					<script>
+						if (parseInt(sessionStorage.getItem('authorization')) > 1) {
+							var div = document.getElementById('teamblocked-requests');
+							generateTable(div, 0, 10, 6, 10);
+						}
+					</script>
+				</div>
+				<div id="open-requests">
+					<script>
+						var div = document.getElementById('open-requests');
+						generateTable(div, 0, 10, 1, 10);
+					</script>
+				</div>
+				<div id="closed-requests">
+					<script>
+						var div = document.getElementById('closed-requests');
+						generateTable(div, 0, 10, 2, 10);
+					</script>
+				</div>
+				<div id="team-requests">
+					<script>
+						if (parseInt(sessionStorage.getItem('authorization')) > 1) {
+							var div = document.getElementById('team-requests');
+							generateTable(div, 0, 10, 4, 10);
+						}
+					</script>
+				</div>
+				<div id="unassigned-requests">
+					<script>
+						if (parseInt(sessionStorage.getItem('authorization')) > 1) {
+							var div = document.getElementById('unassigned-requests');
+							generateTable(div, 0, 10, 5, 10);
+						}
+					</script>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>

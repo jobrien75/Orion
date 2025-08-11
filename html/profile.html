@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Profile | Orion</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../styles/structure.css">
+		<link rel="stylesheet" href="../styles/style.css">
+		<link rel="stylesheet" href="../styles/FROK/frontend-kit.css">
+		<script src="../styles/FROK/frontend-kit.js"></script>
+		<script src="../script/profile.js"></script>
+		<script src="../script/builder.js"></script>
+		<script src="../script/global.js"></script>
+	</head>	
+		
+	<body>
+		<img src="../resources/img/supergraphic-snippet.png" alt=" " class="supergraphic-snippet">
+		<div class="grid-container">
+			<aside class="item-mini" id="aside">
+				<br>
+				<br>
+				<br>
+				<script>
+					appendIconImageFunction(aside, 'back-menu', 'black', 'Landing Page', 'loadIndex()', true, false);
+				</script>
+			</aside>
+			
+			<div class="item-mini"></div>
+			
+			<main class="item-medium" >
+				<div id="profileDiv">
+					<script>
+						var div = document.getElementById("profileDiv");
+						appendHeading(div, "3", "Your Profile");
+						appendParagraph(div, "profile-summary", "");
+						
+						appendHeading(div, "5", "Change Password");
+						appendParagraph(div, "pwrule", "Note: Password must be at least 12 characters long and contain at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 symbol @$!%*#?&+-_.");
+						appendPassword(div, "pwo", "Old Password");
+						appendPassword(div, "pwn", "New Password");
+						appendPassword(div, "pwc", "Confirm New Password");
+						appendFunctionButtonSecondary(div, "Update Password", "updatePassword()");
+						
+						appendHeading(div, "5", "Update Personal Details");
+						appendText(div, "name", "Name");
+						appendEmail(div, "email", "E-Mail");
+						appendText(div, "phone", "Phone Number");
+						appendText(div, "department", "Department");
+						appendText(div, "location", "Location");
+						appendFunctionButtonSecondary(div, "Update Personal Details", "updatePersonalDetails()");
+						loadPersonalDetails();
+					</script>
+				</div>
+			</main>
+			
+			<div class="item-mini"></div>
+		</div>
+	</body>
+</html>

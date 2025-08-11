@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Registration | Orion</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../styles/structure.css">
+		<link rel="stylesheet" href="../styles/style.css">
+		<link rel="stylesheet" href="../styles/FROK/frontend-kit.css">
+		<script src="../styles/FROK/frontend-kit.js"></script>
+		<script src="../script/registration.js"></script>
+		<script src="../script/builder.js"></script>
+		<script src="../script/global.js"></script>
+	</head>
+		
+	<body>
+		<img src="../resources/img/supergraphic-snippet.png" alt=" " class="supergraphic-snippet">
+		<div class="grid-container">
+			<aside class="item-small">
+			</aside>
+			
+			<main class="item-medium" >
+				<div id="registrationForm">
+					<script>
+						var div = document.getElementById("registrationForm");
+						appendHeading(div, "3", "Registration for Orion (Alpha Version)");
+										
+						appendHeading(div, "5", "Login Data");
+						appendText(div, "userid", "User-ID");
+						appendParagraph(div, "useridrule", "Note: Please use uppercase letters for the User-ID. Lowercase letters will automatically converted when submitting the registration");
+						appendPassword(div, "pw", "Password");
+						appendParagraph(div, "pwrule", "Note: Password must be at least 12 characters long and contain at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 symbol @$!%*#?&+-_.");
+						appendPassword(div, "pwc", "Confirm Password");
+						appendParagraph(div, "pwnote", "<b>Important</b>: Due to Orion being still in an Alpha-State, we can not offer the same level of security as other Bosch-Software. <br>Under no circumstances should you use a password that is or was used for another Bosch-Software, especially not your account password!");										
+						
+						appendHeading(div, "5", "Additional User Data");
+						appendText(div, "name", "Name");
+						
+						appendHeading(div, "5", "Additional User Data (Optional)");
+						appendEmail(div, "email", "E-Mail");
+						appendText(div, "phone", "Phone Number");
+						appendText(div, "department", "Department");
+						appendText(div, "location", "Location");
+						
+						appendFunctionButton(div, "Register User", "registerUser()");
+						appendFunctionButton(div, "Return to Landing Page", "loadIndex()");
+					</script>
+				</div>
+			</main>
+			
+			<div class="item-mini"></div>
+		</div>
+	</body>
+</html>

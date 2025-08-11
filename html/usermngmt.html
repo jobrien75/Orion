@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+// Create admin page for user to manage landing page, users, and tlr requests
+// Import all bosch styling for webpage
+// Create code to make sure that user is authorized to be on page, if not, user is redirected to landing page
+// Create 4 buttons on the left side of the screen for page navigation
+// Added title above the buttons called options
+// Centered title and subtitle of the page
+// Seperate functions evenly on the left and right side of the page
+<html lang="en">
+  <head>
+    <title> Requests | Orion </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset ="UTF-8">
+    <link rel="stylesheet" href="../styles/structure.css">
+    <link rel="stylesheet" href="../styles/style.css">
+		<link rel="stylesheet" href="../styles/FROK/frontend-kit.css">
+		<script src="../styles/FROK/frontend-kit.js"></script>
+		<script src="../script/admin.js"></script>
+		<script src="../script/builder.js"></script>
+		<script src="../script/global.js"></script>
+  </head>
+
+  <body>
+    <script>
+        // Redirect to index if no logged in user detected
+        if (sessionStorage.getItem('authorization') == null || parseInt(sessionStorage.getItem('authorization')) < 4 || document.cookie.match(/^(.*;)?\s*OrionSession\s*=\s*[^;]+(.*)?$/) == null) {
+        				createWarningBanner(document.getElementsByTagName('body')[0], 'rwarning', 'Please login using an account with administrator privileges before trying to access this page');
+
+        				// make Close-Button redirect to the index
+        				document.getElementById('rwarning').children[2].addEventListener('click', function() {
+        					window.location.href = "index.html";
+        				}, false);
+
+        				window.stop();
+        			}
+        		</script>
+            <img src="../resources/img/supergraphic-snippet.png" alt=" " class ="supergraphic-snippet">
+            <div class="grid-container">
+              <aside class="item-mini" id="aside">
+                <h1> Options </h1> ---> MAKE SURE THIS TAG IS RIGHT AND ALIGN ABOVE BUTTONS
+                <br>
+                <script>
+                  appendIconImageFunction(aside, 'back-menu', 'black', 'Landing Page', 'loadIndex()', true, false);
+                  appendIconImageFunction(aside, 'gears-3', 'black', 'Front Page', 'loadfrontpage()', true, false);
+                  appendIconImageFunction(aside, 'customer', 'black', 'User Management', 'loadusermngmt', true, false);
+                  appendIconImageFunction(aside, 'document-add', 'black', 'TLR Management', 'loadtlrmngmt()', true, false);
+                </script>
+              </aside>
+
+              <div class="item-dual"> ---> FIX THIS
+                <div id="adminDivLeft">
+                  <script>
+                    appendHeading(document.getElementById('AdminDivLeft'), "3", "Administrator Page"); ###CENTER THIS
+                    appendHeading(document.getElementById('AdminDivLeft'), "3", "User Management"); ###FIGURE OUT WHETHER TO KEEP THIS OR IF IT WORKS & CENTER
+                    manageUserAuthorization();
+                    manageUserPasswords();
+                  </script>
+                </div>
+              </div>
+              <div class="item-dual">
+                <div id="adminDivRight">
+                  <script>
+                    appendBR(document.getElementById('adminDivRight'));
+						        appendBR(document.getElementById('adminDivRight'));
+						        appendBR(document.getElementById('adminDivRight'));
+                    manageUsers();
+                    manageTeamLeader();
+                  </script>
+                </div>
+              </div>
+            </body>
+          </html>

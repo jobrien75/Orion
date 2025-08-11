@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Requests | Orion</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../styles/structure.css">
+		<link rel="stylesheet" href="../styles/style.css">
+		<link rel="stylesheet" href="../styles/FROK/frontend-kit.css">
+		<script src="../styles/FROK/frontend-kit.js"></script>
+		<script src="../script/requests.js"></script>
+		<script src="../script/builder.js"></script>
+		<script src="../script/global.js"></script>
+	</head>
+		
+	<body>
+		<script>
+			// Redirect to index if no logged in user detected
+			if (sessionStorage.getItem('authorization') == null || document.cookie.match(/^(.*;)?\s*OrionSession\s*=\s*[^;]+(.*)?$/) == null) {
+				createWarningBanner(document.getElementsByTagName('body')[0], 'rwarning', 'Please Login before trying to submit a new Request');
+				
+				// make Close-Button redirect to the index
+				document.getElementById('rwarning').children[2].addEventListener('click', function() {
+					window.location.href = "index.html";
+				}, false);
+				
+				window.stop();
+			}
+		</script>
+		
+		<img src="../resources/img/supergraphic-snippet.png" alt=" " class="supergraphic-snippet">
+		
+		<div class="grid-container">
+			<aside class="item-mini" id="aside"> 
+				<h4> Progress </h4>
+				<figure class="a-image" style="width:34%; left: 33%; position:relative">
+					<div class="a-image__ratioWrapper">
+						<img id="icon-user" onclick="showUserInput()"
+						src="../resources/icon/user-black.svg"
+						alt=" " style="height:100%; width:100%; border: 2px dashed #000000; cursor: pointer"/>
+					</div>
+					<figcaption style = "margin-top:0.5rem; letter-spacing:0; margin-bottom:1rem"> Requesting User </figcaption>
+				</figure>
+				
+				<figure class="a-image" style="width:34%; left: 33%; position:relative">
+					<div class="a-image__ratioWrapper">
+						<img id="icon-settings-editor"
+						src="../resources/icon/settings-editor-black.svg"
+						alt=" " style="height:100%; width:100%"/>
+					</div>
+					<figcaption style = "margin-top:0.5rem; letter-spacing:0; margin-bottom:1rem"> Component Info </figcaption>
+				</figure>
+				
+				<figure class="a-image" style="width:34%; left: 33%; position:relative">
+					<div class="a-image__ratioWrapper">
+						<img id="icon-customer"
+						src="../resources/icon/customer-black.svg"
+						alt=" " style="height:100%; width:100%;"/>
+					</div>
+					<figcaption style = "margin-top:0.5rem; letter-spacing:0; margin-bottom:1rem"> Customer Info </figcaption>
+				</figure>
+				
+				<figure class="a-image" style="width:34%; left: 33%; position:relative">
+					<div class="a-image__ratioWrapper">
+						<img id="icon-document-copy"
+						src="../resources/icon/document-copy-black.svg"
+						alt=" " style="height:100%; width:100%"/>
+					</div>
+					<figcaption style = "margin-top:0.5rem; letter-spacing:0; margin-bottom:1rem"> Project Info </figcaption>
+				</figure>
+				
+				<figure class="a-image" style="width:34%; left: 33%; position:relative">
+					<div class="a-image__ratioWrapper">
+						<img id="icon-delivery"
+						src="../resources/icon/delivery-black.svg"
+						alt=" " style="height:100%; width:100%"/>
+					</div>
+					<figcaption style = "margin-top:0.5rem; letter-spacing:0; margin-bottom:1rem"> Shipping Info </figcaption>
+				</figure>
+				
+				<figure class="a-image" style="width:34%; left: 33%; position:relative">
+					<div class="a-image__ratioWrapper">
+						<img id="icon-settings"
+						src="../resources/icon/settings-black.svg"
+						alt=" " style="height:100%; width:100%"/>
+					</div>
+					<figcaption style = "margin-top:0.5rem; letter-spacing:0; margin-bottom:1rem"> Technical Details </figcaption>
+				</figure>
+				
+				<figure class="a-image" style="width:34%; left: 33%; position:relative">
+					<div class="a-image__ratioWrapper">
+						<img id="icon-gears-3"
+						src="../resources/icon/gears-3-black.svg"
+						alt=" " style="height:100%; width:100%"/>
+					</div>	
+					<figcaption style = "margin-top:0.5rem; letter-spacing:0; margin-bottom:1rem"> Technical Details II </figcaption>					
+				</figure>
+			</aside>
+			
+			<main class="item-large" id="requestDiv"> 
+				<h3> Create a new Request </h3>
+				
+				<form id="requestForm">
+					<script>
+						var form = document.getElementById("requestForm");
+						
+						appendHeading(form, "5", "Select Request Category");
+						appendDropdown(form, 'type', 'Request Category', true)
+						fillCategoryDropdown();
+						
+						appendFunctionButtonSecondary(form, "Proceed to Component Selection", "proceedComponentInput()");
+						
+						appendBR(form);
+						appendHeading(form, "5", "Alternatively: Copy exisiting TLR");
+						appendText(form, "tlrid", "TLR-ID");
+						appendFunctionButtonSecondary(form, "Copy TLR", "copyTLRID()");
+						appendFunctionButtonSecondary(form, "Return to Landing Page", "loadIndex()");
+						appendFunctionButtonSecondary(form, "Jump to Dashboard", "loadDashboard()");
+					</script>
+					<p> Note: a blue dot <i class="a-icon boschicon-bosch-ic-dot" title="Required" style="color:#007bc0; display:inline-block"></i>
+						indicates that this input is mandatory. Input Fields without the dot are optional and can be omitted.
+				</form>
+			</main>
+		</div>
+	</body>
+</html>

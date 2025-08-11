@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Start | Orion</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../styles/structure.css">
+		<link rel="stylesheet" href="../styles/style.css">
+		<link rel="stylesheet" href="../styles/FROK/frontend-kit.css">
+		<script src="../styles/FROK/frontend-kit.js"></script>
+		<script src="../script/builder.js"></script>
+		<script src="../script/global.js"></script>
+		<script src="../script/index.js"></script>
+	</head>
+		
+	<body>
+		<img src="../resources/img/supergraphic-snippet.png" alt=" " class="supergraphic-snippet">
+		<div class="grid-container">
+			<aside class="item-small">
+				<div id="login"></div>
+				<script>
+					// Check if Session exists, and skip login screen if this is the case
+					if (document.cookie.match(/^(.*;)?\s*OrionSession\s*=\s*[^;]+(.*)?$/) && sessionStorage.getItem('authorization') != null) {
+						showIndexMenu();
+					} else {
+						// remove Session Authorization in case the cookie was deleted, but not the sessionStorage
+						sessionStorage.removeItem('authorization');
+						// ask server to delete session in case the local session storage was deleted
+						logoutlocal();
+						
+						var div = document.getElementById("login");
+						div.setAttribute("style", "position:relative; left:10%; top:15%;");
+						appendHeading(div, "4", "Login / Registration");
+						appendText(div, "userid", "User-ID");
+						document.getElementById("userid").parentElement.setAttribute("style", "position:relative;left:10%;top:1rem; width:80%");
+						appendPassword(div, "pw", "Password");
+						document.getElementById("pw").parentElement.setAttribute("style", "position:relative;left:10%;top:1.5rem; width:80%");
+						appendFunctionButton(div, "Login", "login()");
+						document.getElementById("Login").setAttribute("style", "position:relative;left:10%;top:2rem; width:80%");
+						appendFunctionButton(div, "Register New Account", "redirectRegistration()");
+						document.getElementById("Register New Account").setAttribute("style", "position:relative;left:10%;top:5rem; width:80%");
+						appendFunctionButton(div, "Status Board", "redirectStatusBoard()");
+						document.getElementById("Status Board").setAttribute("style", "position:relative;left:10%;top:8rem; width:80%");
+					}
+				</script>
+			</aside>
+			
+			<main class="item-large" style="left:10%; width: 80%; position: relative;" id="main">
+				<img src="../resources/icon/Orion Logo.jpg" alt=" " class="start-image">
+			</main>
+			<script>
+				// load Text
+				loadLandingPageText();
+			</script>
+		</div>
+	</body>
+</html>

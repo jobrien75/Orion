@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Statusboard | Orion</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../styles/structure.css">
+		<link rel="stylesheet" href="../styles/style.css">
+		<link rel="stylesheet" href="../styles/FROK/frontend-kit.css">
+		<script src="../styles/FROK/frontend-kit.js"></script>
+		<script src="../script/statusboard.js"></script>
+		<script src="../script/builder.js"></script>
+		<script src="../script/global.js"></script>
+	</head>
+		
+	<body>
+		<img src="../resources/img/supergraphic-snippet.png" alt=" " class="supergraphic-snippet">
+		<div class="grid-container">
+			<aside class="item-mini" id="aside">
+				<br><br><br>
+				<script>
+					appendIconImageFunction(aside, 'back-menu', 'black', 'Landing Page', 'loadIndex()', true, false);
+				</script>
+			</aside>
+			
+			<main class="item-large" >
+				<div id="overview">
+					<script>
+						generateStatusBoard(0, 20, 20);
+					</script>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>
