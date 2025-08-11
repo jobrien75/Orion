@@ -1,0 +1,56 @@
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+	grid-column-gap: 2rem;
+	grid-auto-flow: column;
+	padding-top: 0.5rem;
+}
+
+.item-mini {
+	grid-column: span 2;
+}
+
+.item-small {
+	grid-column: span 4;
+}
+
+.item-dual {
+	grid-column: span 5;
+}
+
+.item-medium {
+	grid-column: span 6;
+}
+
+.item-medium-large {
+	grid-column: span 8;
+}
+
+.item-large {
+	grid-column: span 10;
+}
+
+div {
+	margin-bottom: 1.5rem;
+	max-width: 100%;
+}
+
+.inputwrapper{
+	margin-bottom: 0;
+}
+
+table {
+	position: relative;
+	width: 95%;
+	table-layout: fixed;
+}
+
+td {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	hyphens: auto;
+}
+
+.a-image__ratioWrapper {
+	margin-bottom: 0rem;
+}
