@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+// Create admin page for user to manage landing page, users, and tlr requests
+// Import all bosch styling for webpage
+// Create code to make sure that user is authorized to be on page, if not, user is redirected to landing page
+// Create 4 buttons on the left side of the screen for page navigation
+// Added title above the buttons labeled options
+// Centered title for the page and added page specific subtitle
+// Evenly separated the functions and menus for the page evenly between the left and the right
+<html lang="en">
+  <head>
+    <title> Requests | Orion </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset ="UTF-8">
+    <link rel="stylesheet" href="../styles/structure.css">
+    <link rel="stylesheet" href="../styles/style.css">
+		<link rel="stylesheet" href="../styles/FROK/frontend-kit.css">
+		<script src="../styles/FROK/frontend-kit.js"></script>
+		<script src="../script/admin.js"></script>
+		<script src="../script/builder.js"></script>
+		<script src="../script/global.js"></script>
+  </head>
+
+  <body>
+    <script>
+        // Redirect to index if no logged in user detected
+        if (sessionStorage.getItem('authorization') == null || parseInt(sessionStorage.getItem('authorization')) < 4 || document.cookie.match(/^(.*;)?\s*OrionSession\s*=\s*[^;]+(.*)?$/) == null) {
+        				createWarningBanner(document.getElementsByTagName('body')[0], 'rwarning', 'Please login using an account with administrator privileges before trying to access this page');
+
+        				// make Close-Button redirect to the index
+        				document.getElementById('rwarning').children[2].addEventListener('click', function() {
+        					window.location.href = "index.html";
+        				}, false);
+
+        				window.stop();
+        			}
+        		</script>
+            <img src="../resources/img/supergraphic-snippet.png" alt=" " class ="supergraphic-snippet">
+            <div class="grid-container">
+              <aside class="item-mini" id="aside">
+                <h1> Options </h1> ---> MAKE SURE THIS TAG IS RIGHT AND ALIGN ABOVE BUTTONS
+                <br>
+                <script>
+                  appendIconImageFunction(aside, 'back-menu', 'black', 'Landing Page', 'loadIndex()', true, false);
+                  appendIconImageFunction(aside, 'gears-3', 'black', 'Front Page', 'loadfrontpage()', true, false);
+                  appendIconImageFunction(aside, 'customer', 'black', 'User Management', 'loadusermngmt()', true, false);
+                  appendIconImageFunction(aside, 'document-add', 'black', 'TLR Management', 'loadtlrmngmt()', true, false);
+                </script>
+              </aside>
+
+              <div class="item-dual">
+                <div id="adminDivLeft">
+                  <script>
+                  <center>
+                    appendHeading(document.getElementById('adminDivLeft'), "3", "Administrator Page"); ###CENTER THIS
+                    // Add subheading
+                  </center>
+                    appendHeading(document.getElementById('adminDivLeft'), "3", "TLR Management"); ###FIGURE OUT WHETHER TO KEEP AND IF WORKS OR NOT
+                    manageRouterTemplates();
+                    manageCategories();
+                    manageCustomers();
+                    manageProjects();
+                    manageProducts();
+                  </script>
+                </div>
+              </div>
+              <div class="item-dual">
+                <div id="adminDivRight">
+                  <script>
+                    appendBR(document.getElementById('adminDivRight'))
+                    appendBR(document.getElementById('adminDivRight'))
+                    appendBR(document.getElementById('adminDivRight'))
+                    manageProgressCategories();
+                    manageGenerations();
+                    manageComponentGenerations();
+                    manageProjectTypes();
+                    manageDisposition();
+                  </script>
+            </body>
+          </html>
